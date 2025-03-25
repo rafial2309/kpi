@@ -1,0 +1,15 @@
+ErrorDocument 404 /404.php
+
+RewriteEngine On
+RewriteRule ^sitemaptutorial\.xml/?$ sitemaptutorial.php
+
+RewriteCond %{REQUEST_URI} !/sitemap.xml$
+RewriteCond %{REQUEST_URI} !/robot.txt$
+
+RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+RewriteRule ^ /%1 [NC,L,R]
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_URI}.php [NC,L]
+
+
